@@ -1,6 +1,6 @@
 module PortableText
   module Html
-    module Content
+    module BlockTypes
       class Span
         include ActionView::Helpers::TagHelper
         extend Dry::Initializer

@@ -1,6 +1,6 @@
 module PortableText
   module Html
-    module Content
+    module BlockTypes
       class Block
         include ActionView::Helpers::TagHelper
         include Configured

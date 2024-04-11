@@ -1,6 +1,6 @@
 module PortableText
   module Html
-    module Content
+    module BlockTypes
       class List
         extend Dry::Initializer
         include ActionView::Helpers::TagHelper

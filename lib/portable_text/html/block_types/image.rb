@@ -1,6 +1,6 @@
 module PortableText
   module Html
-    module Content
+    module BlockTypes
       class Image
         include ActionView::Helpers::TagHelper
         extend Dry::Initializer
