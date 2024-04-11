@@ -61,7 +61,11 @@ module PortableText
 
       mark_defs.map do |mark_def|
         mark_type = inflector.underscore(mark_def["_type"]).to_sym
-        PortableText::Config.block.mark_defs.fetch(mark_type).new(**mark_def.transform_keys(&:to_sym).merge(_type: mark_type))
+
+        PortableText::Config.block.mark_defs.fetch(
+          mark_type,
+          MarkDefs::Null
+        ).new(**mark_def.transform_keys(&:to_sym).merge(_type: mark_type))
       end
     end
   end
