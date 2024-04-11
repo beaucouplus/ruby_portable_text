@@ -6,7 +6,7 @@ module PortableText
         extend Dry::Initializer
 
         param :block
-        delegate :type
+        delegate :type, to: :block
 
         def render
           tag.send(:div, "This block type is not referenced yet: #{type}")
