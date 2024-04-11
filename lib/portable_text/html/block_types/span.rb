@@ -39,7 +39,7 @@ module PortableText
         end
 
         def annotation_klass(annotation)
-          config.block.mark_defs.fetch(annotation.type.to_sym)
+          config.block.mark_defs.fetch(annotation.type.to_sym, MarkDefs::Null)
         end
 
         def matching_mark_def?(mark)

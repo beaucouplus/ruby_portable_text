@@ -48,7 +48,7 @@ module PortableText
       end
 
       def block_klass(type)
-        self.class.config.block.types.fetch(type.to_sym)
+        self.class.config.block.types.fetch(type.to_sym, BlockTypes::Null)
       end
     end
   end
