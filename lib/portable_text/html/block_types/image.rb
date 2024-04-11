@@ -9,7 +9,11 @@ module PortableText
         delegate :asset, to: :image
 
         def render
-          tag.img(src: asset["url"])
+          if asset.key?("url")
+            tag.img(src: asset["url"])
+          else
+            tag.div("Please provide a url for this image")
+          end
         end
       end
     end
