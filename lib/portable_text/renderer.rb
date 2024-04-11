@@ -25,7 +25,7 @@ module PortableText
     private
 
     def block_klass(type)
-      PortableText::Config.block.types.fetch(type.to_sym)
+      Config.block.types.fetch(type.to_sym, BlockTypes::Null)
     end
 
     def add_block(block)
