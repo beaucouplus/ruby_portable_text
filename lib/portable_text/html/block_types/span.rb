@@ -11,7 +11,7 @@ module PortableText
         delegate :marks, :text, to: :span
 
         def render
-          generate_nested_tags(marks:, inner_html: text, mark_defs:)
+          generate_nested_tags(marks: marks, inner_html: text, mark_defs: mark_defs)
         end
 
         private
@@ -30,12 +30,12 @@ module PortableText
             )
             inner_tag = html_annotation.render
           else
-            inner_tag = decorator(inner_mark, inner_html:)
+            inner_tag = decorator(inner_mark, inner_html: inner_html)
           end
 
           return inner_tag if marks.empty?
 
-          generate_nested_tags(marks:, inner_html: inner_tag, mark_defs:)
+          generate_nested_tags(marks: marks, inner_html: inner_tag, mark_defs: mark_defs)
         end
 
         def annotation_klass(annotation)

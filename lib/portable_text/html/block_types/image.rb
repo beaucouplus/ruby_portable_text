@@ -9,7 +9,7 @@ module PortableText
         delegate :asset, to: :image
 
         def render
-          tag.img(src: asset['url'])
+          tag.img(src: asset["url"])
         end
       end
     end

@@ -17,7 +17,7 @@ module PortableText
           return tag.send(node_style, **node_arguments) unless children.present?
 
           children_nodes = children.map do |child|
-            span = block_type(:span).new(child, mark_defs:)
+            span = block_type(:span).new(child, mark_defs: mark_defs)
             span.render
           end
 
