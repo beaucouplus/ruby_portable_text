@@ -4,6 +4,7 @@ require "dry/configurable"
 require "dry/inflector"
 require "dry/initializer"
 require "zeitwerk"
+require "action_view"
 
 module PortableText
 end
