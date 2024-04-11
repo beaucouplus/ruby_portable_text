@@ -1,5 +1,5 @@
 module PortableText
-  module MarkDef
+  module MarkDefs
     class Link < Base
       option :href
     end

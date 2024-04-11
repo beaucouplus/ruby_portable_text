@@ -1,6 +1,6 @@
 module PortableText
   module Html
-    module MarkDef
+    module MarkDefs
       class Base
         extend Dry::Initializer
         include ActionView::Helpers::TagHelper

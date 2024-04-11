@@ -1,5 +1,5 @@
 module PortableText
-  module Content
+    module BlockTypes
     class List
       extend Dry::Initializer
 

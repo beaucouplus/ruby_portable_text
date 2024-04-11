@@ -1,6 +1,6 @@
 module PortableText
   module Html
-    module MarkDef
+    module MarkDefs
       class Link < Base
         param :link
         delegate :href, to: :link
