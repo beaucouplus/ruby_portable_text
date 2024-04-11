@@ -1,5 +1,5 @@
 module PortableText
-  class Config
+  module Config
     extend Dry::Configurable
 
     setting :block, reader: true do
