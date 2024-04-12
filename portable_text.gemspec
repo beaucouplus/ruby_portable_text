@@ -30,4 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "dry-inflector", "~> 1.0"
   spec.add_dependency "dry-initializer", "~> 3.1"
   spec.add_dependency "zeitwerk", "~> 2.6"
+
+  spec.add_development_dependency "minitest", "~> 5.22", ">= 5.22.3"
+  spec.add_development_dependency "minitest-reporters", ">= 1.6"
 end
