@@ -5,6 +5,8 @@ module PortableText
         extend Dry::Initializer
         include ActionView::Helpers::TagHelper
 
+        option :key
+        option :type
         option :content, default: proc { nil }
 
         def render
