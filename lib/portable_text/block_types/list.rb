@@ -6,7 +6,7 @@ module PortableText
       option :list_type, default: proc { 'bullet' }
       option :items, default: proc { [] }
       option :level, default: proc { 1 }
-      option :parent, optional: true
+      option :parent, default: proc { nil }
 
       def list? = true
       def type = :list
