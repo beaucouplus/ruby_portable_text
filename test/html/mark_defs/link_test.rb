@@ -16,7 +16,7 @@ class PortableText::Html::MarkDefs::LinkTest < Minitest::Test
 
   def test_delegate_href_to_link
     mark_def = PortableText::Html::MarkDefs::Link.new(@link, **@required_params)
-    assert_equal "http://example.com", mark_def.href
+    assert_equal @link.href, mark_def.href
   end
 
   def test_render_creates_a_tag_with_content_and_href
