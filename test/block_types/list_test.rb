@@ -30,7 +30,7 @@ class PortableText::BlockTypes::ListTest < Minitest::Test
     assert_equal(1, @list.level)
   end
 
-  def test_parent_is_optional
+  def test_parent_defaults_to_nil
     assert_respond_to(@list, :parent)
 
     other_list = new_list(parent: @list)
