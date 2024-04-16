@@ -15,11 +15,13 @@ module PortableText
         }.freeze
 
         def render
+          list = LIST_TYPES.fetch(list_type.to_sym, :ul)
+          return tag.send(list) if items.empty?
+
           blocks = items.map do |block|
             block_type(block.type).new(block).render
           end
 
-          list = LIST_TYPES.fetch(list_type.to_sym)
           tag.send(list, safe_join(blocks))
         end
       end
