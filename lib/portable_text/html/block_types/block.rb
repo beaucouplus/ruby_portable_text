@@ -30,7 +30,7 @@ module PortableText
           return @node if defined?(@node)
           return @node = config.block.nodes.fetch(:li) if list_item.present?
 
-          @node = config.block.nodes.fetch(style&.to_sym, :p)
+          @node = config.block.nodes.fetch(style&.to_sym, { node: :p })
         end
       end
     end
