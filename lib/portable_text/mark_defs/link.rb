@@ -1,7 +1,7 @@
 module PortableText
   module MarkDefs
     class Link < Base
-      option :href
+      option :href, default: proc { "" }
     end
   end
 end

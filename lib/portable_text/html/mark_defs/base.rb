@@ -1,15 +1,14 @@
 module PortableText
   module Html
     module MarkDefs
-      class Base
-        extend Dry::Initializer
+      class Base < Html::BaseComponent
         include ActionView::Helpers::TagHelper
 
-        option :key
-        option :type
-        option :content, default: proc { nil }
+        param :mark_def, reader: true
+        option :content, default: proc { nil }, reader: true
+        delegate :type, :key, to: :mark_def
 
-        def render
+        def view_template
           raise PortableText::Errors::UnimplementedError
         end
       end

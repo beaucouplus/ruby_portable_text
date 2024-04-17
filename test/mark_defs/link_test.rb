@@ -19,12 +19,9 @@ class PortableText::MarkDefs::LinkTest < Minitest::Test
     PortableText::MarkDefs::Link.new(**params)
   end
 
-  def test_href_is_mandatory
-    error = assert_raises(KeyError) do
-      new_link(**@mandatory_params.except(:href))
-    end
-
-    assert_includes(error.message, "href")
+  def test_href_defaults_to_empty_string
+    link = new_link(**@mandatory_params.except(:href))
+    assert_equal("", link.href)
   end
 
   def test_responds_to_href

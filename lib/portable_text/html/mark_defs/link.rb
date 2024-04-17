@@ -2,11 +2,10 @@ module PortableText
   module Html
     module MarkDefs
       class Link < Base
-        param :link
-        delegate :href, to: :link
+        delegate :href, to: :@mark_def
 
-        def render
-          tag.a(content, href: href)
+        def view_template
+          a(href: href) { @content }
         end
       end
     end

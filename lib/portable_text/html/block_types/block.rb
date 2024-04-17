@@ -1,27 +1,32 @@
 module PortableText
   module Html
     module BlockTypes
-      class Block
+      class Block < Html::BaseComponent
         include ActionView::Helpers::TagHelper
         include Configured
-        extend Dry::Initializer
-        extend Dry::Configurable
 
         param :block
-        delegate :style, :children, :mark_defs, :list_item, to: :block
+        delegate :style, :children, :mark_defs, :list_item, to: :@block
 
         def render
+          call
+        end
+
+        def view_template
           node_style = node.fetch(:node)
           node_arguments = node.except(:node)
 
           return tag.send(node_style, **node_arguments) unless children.present?
 
           children_nodes = children.map do |child|
-            span = block_type(:span).new(child, mark_defs: mark_defs)
-            span.render
+            block_type(:span).new(child, mark_defs: mark_defs)
           end
 
-          tag.send(node_style, safe_join(children_nodes), **node_arguments)
+          send(node_style, **node_arguments) do
+            children_nodes.each do |child|
+              render child
+            end
+          end
         end
 
         private

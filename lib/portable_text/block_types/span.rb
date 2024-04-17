@@ -6,7 +6,7 @@ module PortableText
       option :marks, default: proc { [] }
       option :_key, as: :key
       option :_type, as: :type
-      option :text, optional: true
+      option :text, default: proc { nil }
     end
   end
 end
