@@ -10,7 +10,7 @@ class PortableText::Html::MarkDefs::NullTest < Minitest::Test
     html_mark_def = PortableText::Html::MarkDefs::Null.new(null_mark_def)
     assert_equal(
       "<div>Missing mark def html renderer for type: not_found - key: 123</div>",
-      html_mark_def.render
+      html_mark_def.call
     )
   end
 end

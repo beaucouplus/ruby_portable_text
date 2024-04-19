@@ -14,10 +14,6 @@ class PortableText::Html::MarkDefs::BaseTest < Minitest::Test
     PortableText::Html::MarkDefs::Base.new(@mark_def, **params)
   end
 
-  def test_content_defaults_to_nil
-    assert_nil @html_mark_def.content
-  end
-
   def test_render_raises_unimplemented_error
     assert_raises(PortableText::Errors::UnimplementedError) { @html_mark_def.call }
   end

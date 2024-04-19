@@ -1,15 +1,11 @@
 module PortableText
   module Html
     module BlockTypes
-      class Null
-        include ActionView::Helpers::TagHelper
-        extend Dry::Initializer
-
+      class Null < Html::BaseComponent
         param :block
-        delegate :type, to: :block
 
-        def render
-          tag.send(:div, "This block type is not referenced yet: #{type}")
+        def view_template
+          div { "This block type is not referenced yet: #{@block.type}" }
         end
       end
     end

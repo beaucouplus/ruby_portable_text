@@ -4,8 +4,8 @@ module PortableText
       class Link < Base
         delegate :href, to: :@mark_def
 
-        def view_template
-          a(href: href) { @content }
+        def view_template(&block)
+          a(href: href, &block)
         end
       end
     end

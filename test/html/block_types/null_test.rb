@@ -7,7 +7,7 @@ class PortableText::Html::BlockTypes::NullTest < Minitest::Test
 
     assert_equal(
       "<div>This block type is not referenced yet: not_found</div>",
-      html_block.render
+      html_block.call
     )
   end
 end

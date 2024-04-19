@@ -25,7 +25,6 @@ class PortableText::Html::BlockTypes::SpanTest < Minitest::Test
   def test_it_renders_marked_content
     span = new_span(marks: ["strong"])
     html_span = PortableText::Html::BlockTypes::Span.new(span)
-    assert_equal("Hello, World!", html_span.text)
 
     assert_equal "<strong>Hello, World!</strong>", html_span.call
   end
@@ -71,5 +70,15 @@ class PortableText::Html::BlockTypes::SpanTest < Minitest::Test
       "<em><a href=\"http://example.com\"><strong>Hello, World!</strong></a></em>",
       html_span.call
     )
+  end
+
+  def test_when_node_configuration_is_overriden_adds_new_node_arguments
+    PortableText::Html::Serializer.config.span.marks[:em] = { node: :em, class: "title" }
+    span = new_span(marks: ["em"])
+    html_span = PortableText::Html::BlockTypes::Span.new(span)
+
+    assert_equal "<em class=\"title\">Hello, World!</em>", html_span.call
+
+    PortableText::Html::Serializer.config.span.marks[:em] = { node: :em }
   end
 end

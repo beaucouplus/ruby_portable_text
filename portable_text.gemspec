@@ -25,7 +25,6 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "actionview", "~> 7.1"
   spec.add_dependency "dry-configurable", "~> 1.0"
   spec.add_dependency "dry-inflector", "~> 1.0"
   spec.add_dependency "dry-initializer", "~> 3.1"

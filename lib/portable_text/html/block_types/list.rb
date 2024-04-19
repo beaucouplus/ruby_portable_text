@@ -1,28 +1,27 @@
 module PortableText
   module Html
     module BlockTypes
-      class List
-        extend Dry::Initializer
-        include ActionView::Helpers::TagHelper
+      class List < Html::BaseComponent
         include Configured
 
         param :list
-        delegate :items, :list_type, to: :list
+        delegate :items, :list_type, to: :@list
 
-        LIST_TYPES = {
-          bullet: :ul,
-          numeric: :ol
-        }.freeze
+        def view_template
+          node_style = node.fetch(:node)
+          node_arguments = node.except(:node)
 
-        def render
-          list = LIST_TYPES.fetch(list_type.to_sym, :ul)
-          return tag.send(list) if items.empty?
-
-          blocks = items.map do |block|
-            block_type(block.type).new(block).render
+          send(node_style, **node_arguments) do
+            items.each do |block|
+              render block_type(block.type).new(block)
+            end
           end
+        end
 
-          tag.send(list, safe_join(blocks))
+        private
+
+        def node
+          @node ||= config.block.list_types.fetch(list_type.to_sym, { node: :ul })
         end
       end
     end

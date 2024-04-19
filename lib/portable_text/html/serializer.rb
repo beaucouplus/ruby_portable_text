@@ -1,9 +1,7 @@
 module PortableText
   module Html
-    class Serializer
-      extend Dry::Initializer
+    class Serializer < Html::BaseComponent
       extend Dry::Configurable
-      include ActionView::Helpers::TagHelper
 
       setting :block do
         setting :types, default: {
@@ -28,6 +26,11 @@ module PortableText
         setting :mark_defs, default: {
           link: Html::MarkDefs::Link
         }
+
+        setting :list_types, default: {
+          bullet: { node: :ul },
+          numeric: { node: :ol }
+        }
       end
 
       setting :span do
@@ -39,13 +42,13 @@ module PortableText
 
       param :blocks
 
-      def render
-        nodes = blocks.map do |block|
-          block_klass(block.type).new(block).render
+      def view_template
+        @blocks.each do |block|
+          render block_klass(block.type).new(block)
         end
-
-        safe_join(nodes)
       end
+
+      private
 
       def block_klass(type)
         self.class.config.block.types.fetch(type.to_sym, BlockTypes::Null)

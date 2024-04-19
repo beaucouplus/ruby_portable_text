@@ -1,18 +1,14 @@
 module PortableText
   module Html
     module BlockTypes
-      class Image
-        include ActionView::Helpers::TagHelper
-        extend Dry::Initializer
-
+      class Image < Html::BaseComponent
         param :image
-        delegate :asset, to: :image
 
-        def render
-          if asset.key?("url")
-            tag.img(src: asset["url"])
+        def view_template
+          if @image.asset.key?("url")
+            img(src: @image.asset["url"])
           else
-            tag.div("Please provide a url for this image")
+            div { "Please provide a url for this image" }
           end
         end
       end
