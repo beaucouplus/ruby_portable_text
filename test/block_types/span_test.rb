@@ -3,9 +3,8 @@ require "test_helper"
 class PortableText::BlockTypes::SpanTest < Minitest::Test
   def setup
     @mandatory_params = {
-      marks: [],
       _key: "123",
-      _type: "block"
+      _type: "span"
     }
 
     @span = new_span(**@mandatory_params)
