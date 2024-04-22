@@ -11,12 +11,12 @@ class PortableText::MarkDefs::LinkTest < Minitest::Test
     @mark_def = new_link(**@mandatory_params)
   end
 
-  def test_link_is_a_child_of_base
-    assert PortableText::MarkDefs::Link < PortableText::MarkDefs::Base
-  end
-
   def new_link(**params)
     PortableText::MarkDefs::Link.new(**params)
+  end
+
+  def test_link_is_a_child_of_base
+    assert PortableText::MarkDefs::Link < PortableText::MarkDefs::Base
   end
 
   def test_href_defaults_to_empty_string
