@@ -50,6 +50,6 @@ class PortableText::Html::BlockTypes::ListTest < Minitest::Test
     html_list = PortableText::Html::BlockTypes::List.new(list)
     assert_equal "<ul class=\"title\"></ul>", html_list.call
 
-    PortableText::Html::Serializer.config.block.list_types[:ul] = { node: :ul }
+    PortableText::Html::Serializer.config.block.list_types[:bullet] = { node: :ul }
   end
 end
