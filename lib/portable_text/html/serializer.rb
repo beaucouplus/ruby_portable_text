@@ -12,7 +12,7 @@ module PortableText
           span: Html::BlockTypes::Span
         }
 
-        setting :nodes, default: {
+        setting :styles, default: {
           h1: { node: :h1 },
           h2: { node: :h2 },
           h3: { node: :h3 },

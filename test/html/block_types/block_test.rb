@@ -60,11 +60,11 @@ class PortableText::Html::BlockTypes::BlockTest < Minitest::Test
   end
 
   def test_when_node_configuration_is_overriden_adds_new_node_arguments
-    PortableText::Html::Serializer.config.block.nodes[:h1] = { node: :h1, class: "title" }
+    PortableText::Html::Serializer.config.block.styles[:h1] = { node: :h1, class: "title" }
     block = new_block
     html_block = PortableText::Html::BlockTypes::Block.new(block)
     assert_equal "<h1 class=\"title\"></h1>", html_block.call
 
-    PortableText::Html::Serializer.config.block.nodes[:h1] = { node: :h1 }
+    PortableText::Html::Serializer.config.block.styles[:h1] = { node: :h1 }
   end
 end

@@ -22,9 +22,9 @@ module PortableText
 
         def node
           return @node if defined?(@node)
-          return @node = config.block.nodes.fetch(:li) if list_item.present?
+          return @node = config.block.styles.fetch(:li) if list_item.present?
 
-          @node = config.block.nodes.fetch(style&.to_sym, { node: :p })
+          @node = config.block.styles.fetch(style&.to_sym, { node: :p })
         end
       end
     end
