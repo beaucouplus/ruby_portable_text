@@ -6,7 +6,7 @@ module PortableText
       end
 
       def block_type(type)
-        config.block.types.fetch(type.to_sym)
+        config.block.types.fetch(type.to_sym, BlockTypes::Null)
       end
     end
   end

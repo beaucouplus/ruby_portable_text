@@ -2,6 +2,7 @@ module PortableText
   module Html
     class Serializer < Html::BaseComponent
       extend Dry::Configurable
+      include Configured
 
       setting :block do
         setting :types, default: {
@@ -44,14 +45,8 @@ module PortableText
 
       def view_template
         @blocks.each do |block|
-          render block_klass(block.type).new(block)
+          render block_type(block.type).new(block)
         end
-      end
-
-      private
-
-      def block_klass(type)
-        self.class.config.block.types.fetch(type.to_sym, BlockTypes::Null)
       end
     end
   end
