@@ -1,14 +1,24 @@
 module PortableText
-  class Renderer
-    attr_reader :content, :blocks, :to
+  class Serializer
+    attr_reader :content, :blocks, :to, :converted
 
     def initialize(content:, to: :html)
       @content = content
       @blocks = []
       @to = to
+      @converted = false
     end
 
     def render
+      convert!
+
+      serializer = Config.serializers.fetch(to) { raise Errors::UnknownSerializerError }
+      serializer.new(blocks).call
+    end
+
+    def convert!
+      return if converted
+
       content.each do |block_params|
         params = block_params.transform_keys(&:to_sym)
         params[:children] = create_children(params[:children])
@@ -18,8 +28,7 @@ module PortableText
         add_block(block)
       end
 
-      renderer = PortableText::Config.serializers.fetch(to)
-      renderer.new(blocks).render
+      @converted = true
     end
 
     private
@@ -47,7 +56,7 @@ module PortableText
     end
 
     def create_children(children)
-      return if children.blank?
+      return [] if children.blank?
 
       children.map do |child|
         block_klass(:span).new(**child.transform_keys(&:to_sym))
@@ -55,14 +64,14 @@ module PortableText
     end
 
     def create_mark_defs(mark_defs)
-      return if mark_defs.blank?
+      return [] if mark_defs.blank?
 
       inflector = Dry::Inflector.new
 
       mark_defs.map do |mark_def|
         mark_type = inflector.underscore(mark_def["_type"]).to_sym
 
-        PortableText::Config.block.mark_defs.fetch(
+        Config.block.mark_defs.fetch(
           mark_type,
           MarkDefs::Null
         ).new(**mark_def.transform_keys(&:to_sym).merge(_type: mark_type))
