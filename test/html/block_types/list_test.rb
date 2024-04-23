@@ -45,11 +45,11 @@ class PortableText::Html::BlockTypes::ListTest < Minitest::Test
   end
 
   def test_when_node_configuration_is_overriden_adds_new_node_arguments
-    PortableText::Html::Serializer.config.block.list_types[:bullet] = { node: :ul, class: "title" }
+    PortableText::Html::Config.config.block.list_types[:bullet] = { node: :ul, class: "title" }
     list = PortableText::BlockTypes::List.new
     html_list = PortableText::Html::BlockTypes::List.new(list)
     assert_equal "<ul class=\"title\"></ul>", html_list.call
 
-    PortableText::Html::Serializer.config.block.list_types[:bullet] = { node: :ul }
+    PortableText::Html::Config.config.block.list_types[:bullet] = { node: :ul }
   end
 end

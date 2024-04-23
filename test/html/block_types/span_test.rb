@@ -73,12 +73,12 @@ class PortableText::Html::BlockTypes::SpanTest < Minitest::Test
   end
 
   def test_when_node_configuration_is_overriden_adds_new_node_arguments
-    PortableText::Html::Serializer.config.span.marks[:em] = { node: :em, class: "title" }
+    PortableText::Html::Config.config.span.marks[:em] = { node: :em, class: "title" }
     span = new_span(marks: ["em"])
     html_span = PortableText::Html::BlockTypes::Span.new(span)
 
     assert_equal "<em class=\"title\">Hello, World!</em>", html_span.call
 
-    PortableText::Html::Serializer.config.span.marks[:em] = { node: :em }
+    PortableText::Html::Config.config.span.marks[:em] = { node: :em }
   end
 end

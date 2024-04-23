@@ -12,7 +12,7 @@ module PortableText
     def render
       convert!
 
-      serializer = Config.serializers.fetch(to) { raise Errors::UnknownSerializerError }
+      serializer = config.serializers.fetch(to) { raise Errors::UnknownSerializerError }
       serializer.new(blocks).call
     end
 
@@ -33,8 +33,10 @@ module PortableText
 
     private
 
+    def config = PortableText.config
+
     def block_klass(type)
-      Config.block.types.fetch(type.to_sym, BlockTypes::Null)
+      config.block.types.fetch(type.to_sym, BlockTypes::Null)
     end
 
     def add_block(block)
@@ -69,12 +71,13 @@ module PortableText
       inflector = Dry::Inflector.new
 
       mark_defs.map do |mark_def|
-        mark_type = inflector.underscore(mark_def["_type"]).to_sym
+        mark_def.transform_keys!(&:to_sym)
+        mark_type = inflector.underscore(mark_def[:_type]).to_sym
 
-        Config.block.mark_defs.fetch(
+        config.block.mark_defs.fetch(
           mark_type,
           MarkDefs::Null
-        ).new(**mark_def.transform_keys(&:to_sym).merge(_type: mark_type))
+        ).new(**mark_def.merge(_type: mark_type))
       end
     end
   end
