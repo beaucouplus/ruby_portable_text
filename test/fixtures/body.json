@@ -374,46 +374,6 @@
         }
       ],
       "style": "normal"
-    },
-    {
-      "_key": "011114b91759",
-      "_type": "image",
-      "asset": {
-        "_ref": "image-5bc037c90920b6df98e067b8bfb8fc8cfd101bbb-582x315-jpg",
-        "_type": "reference"
-      }
-    },
-    {
-      "_key": "2b559df09f55",
-      "_type": "block",
-      "children": [
-        {
-          "_key": "74f9f9fd2eb6",
-          "_type": "span",
-          "marks": [
-            "36413503a63d",
-            "strong",
-            "em"
-          ],
-          "text": "Lien interne"
-        }
-      ],
-      "markDefs": [
-        {
-          "_key": "36413503a63d",
-          "_type": "internalLink",
-          "reference": {
-            "_ref": "12ac9d71-c772-47c0-a604-4016e152346b",
-            "_type": "reference"
-          }
-        }
-      ],
-      "style": "normal"
-    },
-    {
-      "_key": "55a6531165df",
-      "_ref": "12ac9d71-c772-47c0-a604-4016e152346b",
-      "_type": "reference"
     }
   ]
 }
