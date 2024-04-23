@@ -11,8 +11,7 @@ module PortableText
   def self.config = Config.config
 
   module Html
-    # TODO: try implemting this config pattern
-    # delegate :config, to: Html::Config
+    def self.config = Html::Config.config
   end
 end
 
