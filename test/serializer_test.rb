@@ -113,6 +113,6 @@ class SerializerTest < Minitest::Test
     serializer = PortableText::Serializer.new(content: [@portable_text_block], to: :html)
     result = serializer.render
 
-    assert_equal PortableText::Config.serializers[:html].new(serializer.blocks).call, result
+    assert_equal PortableText.config.serializers[:html].new(serializer.blocks).call, result
   end
 end

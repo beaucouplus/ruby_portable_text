@@ -1,8 +1,8 @@
 module PortableText
-  module Config
+  class Config
     extend Dry::Configurable
 
-    setting :block, reader: true do
+    setting :block do
       setting :types, default: {
         block: BlockTypes::Block,
         image: BlockTypes::Image,
@@ -17,6 +17,6 @@ module PortableText
 
     setting :serializers, default: {
       html: Html::Serializer
-    }, reader: true
+    }
   end
 end
