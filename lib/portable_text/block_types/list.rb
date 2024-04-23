@@ -1,3 +1,6 @@
+# A list can contain blocks and child lists.
+# items: [Block, List, Block, List, Block]
+
 module PortableText
   module BlockTypes
     class List
@@ -11,6 +14,10 @@ module PortableText
       def list? = true
       def type = :list
 
+      # Adds a block to the list.
+      # If the block is on same level as the list, it will be added to the list.
+      # If the block is on a higher level, it will be added to a child list
+      # Else it will be added to the nearest ancestor list.
       def add(block)
         if block.level == level
           items << block

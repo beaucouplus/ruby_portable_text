@@ -2,6 +2,10 @@ module PortableText
   class Config
     extend Dry::Configurable
 
+    # Default settings
+    # These can be overridden
+    # Example: PortableText.config.block.types.merge!({ block: MyCustomBlock })
+
     setting :block do
       setting :types, default: {
         block: BlockTypes::Block,

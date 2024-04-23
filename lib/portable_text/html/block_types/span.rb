@@ -15,6 +15,15 @@ module PortableText
 
         private
 
+        # Visit a node and render it
+        # If the node is a mark definition, render the appropriate mark definition
+        # Otherwise, render the node with the appropriate mark decorator
+        # If the node has a child, visit the child
+        # Else render the node as plain text
+        # -------------
+        # Mark definitions and mark decorators are defined in the configuration
+        # If a mark definition is not found, a Null mark definition is rendered along with an error message
+        # if a mark is not found, a span tag is rendered
         def visit(node)
           return plain(node.value) if node.child.nil?
 
@@ -52,12 +61,15 @@ module PortableText
           end
         end
 
+        # Create a linked list of nodes to make it easier to traverse the tree of marks
+        # Marks are traversed in the marks order and the text is the last node
         def create_nodes
           nodes = marks + [text]
-          root = Node.new(value: nodes.first)
-          current_node = root
 
+          root = Node.new(value: nodes.first)
           return root if nodes.size == 1
+
+          current_node = root
 
           nodes[1..].each do |mark|
             current_node.child = Node.new(value: mark)

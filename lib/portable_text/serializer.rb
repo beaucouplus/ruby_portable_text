@@ -9,6 +9,9 @@ module PortableText
       @converted = false
     end
 
+    # After conversion, the Portable Text content is serialized to the desired format.
+    # The serializer is determined by the `to` parameter, which defaults to `:html`.
+    # The serializer must be defined in the PortableText configuration and respond to `call`.
     def render
       convert!
 
@@ -16,6 +19,10 @@ module PortableText
       serializer.new(blocks).call
     end
 
+    # Converts the Portable Text content into a collection of blocks converted to ruby objects
+    # along with their children and markDefs.
+    # Object parameters are symbolized and camelCase keys are converted to snake_case.
+    # This method is idempotent.
     def convert!
       return if converted
 
@@ -39,6 +46,9 @@ module PortableText
       config.block.types.fetch(type.to_sym, BlockTypes::Null)
     end
 
+    # Adds a block to the blocks collection.
+    # If the block is a list item, it will be added to the last list block if it exists.
+    # Else a new list block will be created.
     def add_block(block)
       return blocks.push(block) unless block.list_item?
 
