@@ -1,12 +1,13 @@
 module PortableText
   class Serializer
-    attr_reader :content, :blocks, :to, :converted
+    attr_reader :content, :blocks, :to, :converted, :view_context
 
-    def initialize(content:, to: :html)
+    def initialize(content:, to: :html, view_context: nil)
       @content = content
       @blocks = []
       @to = to
       @converted = false
+      @view_context = view_context
     end
 
     # After conversion, the Portable Text content is serialized to the desired format.
@@ -16,7 +17,7 @@ module PortableText
       convert!
 
       serializer = config.serializers.fetch(to) { raise Errors::UnknownSerializerError }
-      serializer.new(blocks).call
+      serializer.new(blocks).call(view_context: view_context)
     end
 
     # Converts the Portable Text content into a collection of blocks converted to ruby objects
