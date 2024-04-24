@@ -64,7 +64,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 5.22, >= 5.22.3)
-  minitest-reporters (>= 1.6)
+  minitest-reporters (~> 1.6)
   portable_text!
   rake (~> 13.0)
   rubocop (~> 1.21)
