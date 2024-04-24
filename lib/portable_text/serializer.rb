@@ -11,12 +11,12 @@ module PortableText
 
     # After conversion, the Portable Text content is serialized to the desired format.
     # The serializer is determined by the `to` parameter, which defaults to `:html`.
-    # The serializer must be defined in the PortableText configuration and respond to `call`.
-    def render(**params)
+    # The serializer must be defined in the PortableText configuration.
+    def render
       convert!
 
       serializer = config.serializers.fetch(to) { raise Errors::UnknownSerializerError }
-      serializer.new(blocks).call(**params)
+      serializer.new(blocks)
     end
 
     # Converts the Portable Text content into a collection of blocks converted to ruby objects
