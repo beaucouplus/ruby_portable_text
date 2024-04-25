@@ -1,6 +1,8 @@
 require "test_helper"
 
 class PortableText::Html::BlockTypes::SpanTest < Minitest::Test
+  include Phlex::Testing::ViewHelper
+
   def setup
     @span_params = {
       _key: "36be0ac1493e",
@@ -19,28 +21,28 @@ class PortableText::Html::BlockTypes::SpanTest < Minitest::Test
     span = new_span
     html_span = PortableText::Html::BlockTypes::Span.new(span)
 
-    assert_equal "Hello, World!", html_span.call
+    assert_equal "Hello, World!", render(html_span)
   end
 
   def test_it_renders_marked_content
     span = new_span(marks: ["strong"])
     html_span = PortableText::Html::BlockTypes::Span.new(span)
 
-    assert_equal "<strong>Hello, World!</strong>", html_span.call
+    assert_equal "<strong>Hello, World!</strong>", render(html_span)
   end
 
   def test_it_renders_marked_content_with_multiple_marks
     span = new_span(marks: ["strong", "em"])
     html_span = PortableText::Html::BlockTypes::Span.new(span)
 
-    assert_equal "<strong><em>Hello, World!</em></strong>", html_span.call
+    assert_equal "<strong><em>Hello, World!</em></strong>", render(html_span)
   end
 
   def test_it_renders_span_if_mark_not_defined
     span = new_span(marks: ["something"])
     html_span = PortableText::Html::BlockTypes::Span.new(span)
 
-    assert_equal "<span>Hello, World!</span>", html_span.call
+    assert_equal "<span>Hello, World!</span>", render(html_span)
   end
 
   def test_it_renders_marked_content_with_mark_defs
@@ -53,7 +55,7 @@ class PortableText::Html::BlockTypes::SpanTest < Minitest::Test
     span = new_span(marks: ["123"])
     html_span = PortableText::Html::BlockTypes::Span.new(span, mark_defs: [link])
 
-    assert_equal "<a href=\"http://example.com\">Hello, World!</a>", html_span.call
+    assert_equal "<a href=\"http://example.com\">Hello, World!</a>", render(html_span)
   end
 
   def test_it_renders_both_marks_and_mark_defs
@@ -68,7 +70,7 @@ class PortableText::Html::BlockTypes::SpanTest < Minitest::Test
 
     assert_equal(
       "<em><a href=\"http://example.com\"><strong>Hello, World!</strong></a></em>",
-      html_span.call
+      render(html_span)
     )
   end
 
@@ -77,7 +79,7 @@ class PortableText::Html::BlockTypes::SpanTest < Minitest::Test
     span = new_span(marks: ["em"])
     html_span = PortableText::Html::BlockTypes::Span.new(span)
 
-    assert_equal "<em class=\"title\">Hello, World!</em>", html_span.call
+    assert_equal "<em class=\"title\">Hello, World!</em>", render(html_span)
 
     PortableText::Html::Config.config.span.marks[:em] = { node: :em }
   end

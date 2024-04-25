@@ -1,6 +1,8 @@
 require "test_helper"
 
 class PortableText::Html::SerializerTest < Minitest::Test
+  include Phlex::Testing::ViewHelper
+
   def test_it_renders_blocks_concatenated
     blocks = [
       PortableText::BlockTypes::Block.new(
@@ -17,6 +19,6 @@ class PortableText::Html::SerializerTest < Minitest::Test
     ]
 
     serializer = PortableText::Html::Serializer.new(blocks)
-    assert_equal "<h1></h1><img src=\"https://example.com/image.jpg\">", serializer.call
+    assert_equal "<h1></h1><img src=\"https://example.com/image.jpg\">", render(serializer)
   end
 end

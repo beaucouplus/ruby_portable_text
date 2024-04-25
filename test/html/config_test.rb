@@ -1,6 +1,8 @@
 require "test_helper"
 
 class PortableText::Html::ConfigTest < Minitest::Test
+  include Phlex::Testing::ViewHelper
+
   class NewBlock < PortableText::Html::BaseComponent
     def view_template
       h1 { "New block" }
@@ -17,7 +19,7 @@ class PortableText::Html::ConfigTest < Minitest::Test
     ]
 
     serializer = PortableText::Html::Serializer.new(blocks)
-    assert_equal "<h1>New block</h1>", serializer.call
+    assert_equal "<h1>New block</h1>", render(serializer)
     PortableText::Html::Config.config.block.types.delete(:new_block)
   end
 
@@ -32,7 +34,7 @@ class PortableText::Html::ConfigTest < Minitest::Test
     ]
 
     serializer = PortableText::Html::Serializer.new(blocks)
-    assert_equal "<section></section>", serializer.call
+    assert_equal "<section></section>", render(serializer)
   end
 
   class Highlight < PortableText::MarkDefs::Base
@@ -72,7 +74,7 @@ class PortableText::Html::ConfigTest < Minitest::Test
 
     serializer = PortableText::Html::Serializer.new(blocks)
     assert_equal "<h1><span>I use the custom mark def cause I want to.</span></h1>",
-                 serializer.call
+                 render(serializer)
   end
 
   def test_i_can_add_new_list_types
@@ -80,7 +82,7 @@ class PortableText::Html::ConfigTest < Minitest::Test
 
     list = PortableText::BlockTypes::List.new(list_type: :section)
     html_list = PortableText::Html::BlockTypes::List.new(list)
-    assert_equal "<section></section>", html_list.call
+    assert_equal "<section></section>", render(html_list)
   end
 
   def test_i_can_add_new_span_marks
@@ -96,6 +98,6 @@ class PortableText::Html::ConfigTest < Minitest::Test
       )
     ]
     serializer = PortableText::Html::Serializer.new(blocks)
-    assert_equal "<h1><span class=\"lowercase\">I use the custom mark</span></h1>", serializer.call
+    assert_equal "<h1><span class=\"lowercase\">I use the custom mark</span></h1>", render(serializer)
   end
 end
