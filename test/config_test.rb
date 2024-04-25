@@ -16,16 +16,12 @@ class PortableText::ConfigTest < Minitest::Test
   end
 
   class NewSerializer
-    def initialize(_blocks) = nil
-
-    def call
-      "New serializer"
-    end
+    def initialize(_) = nil
   end
 
   def test_i_can_add_new_serializers
     PortableText::Config.config.serializers[:new_serializer] = NewSerializer
-    assert_equal "New serializer", PortableText::Serializer.new(content: [], to: :new_serializer).render
+    assert_instance_of NewSerializer, PortableText::Serializer.new(content: [], to: :new_serializer).render
   end
 
   class NewMarkDef < PortableText::MarkDefs::Base

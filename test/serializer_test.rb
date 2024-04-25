@@ -109,10 +109,10 @@ class SerializerTest < Minitest::Test
     assert_instance_of PortableText::MarkDefs::Link, block.mark_defs.first
   end
 
-  def test_it_delegates_rendering_to_configured_serializer
+  def test_render_instanciates_chosen_serializer
     serializer = PortableText::Serializer.new(content: [@portable_text_block], to: :html)
     result = serializer.render
 
-    assert_equal PortableText.config.serializers[:html].new(serializer.blocks).call, result
+    assert_instance_of PortableText.config.serializers[:html], result
   end
 end

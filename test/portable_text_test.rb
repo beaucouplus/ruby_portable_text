@@ -15,7 +15,7 @@ class PortableTextTest < Minitest::Test
     json = File.read("#{Dir.pwd}/test/fixtures/body.json")
     body = JSON.parse(json)
 
-    content = PortableText::Serializer.new(content: body["body"]).render
+    content = PortableText::Serializer.new(content: body["body"]).render.call
     puts content
     assert_equal(
       content,
