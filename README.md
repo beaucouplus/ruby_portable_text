@@ -21,9 +21,7 @@ gem install portable_text
 
 ## Usage
 
-See Rails usage for usage in rails
-
-Given Portable Text content,
+See [Rails usage](#rails_usage) for usage in rails
 
 `PortableText::Serializer` takes 2 parameters:
 
@@ -63,7 +61,7 @@ portable_text.render.call
 # => <h1>Hello world!</h1>
 ```
 
-### Usage with Rails
+### Rails usage
 
 To use the `PortableText` HTML serializer in rails, you need to add `phlex-rails` to the Gemfile.
 
