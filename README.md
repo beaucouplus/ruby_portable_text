@@ -13,11 +13,15 @@ You can:
 - customize each HTML node with custom attributes
 - create a new serializer
 
+
+
 ## Installation
 
 ```other
 gem install portable_text
 ```
+
+
 
 ## Usage
 
@@ -61,6 +65,7 @@ portable_text.render.call
 # => <h1>Hello world!</h1>
 ```
 
+
 ### Rails usage
 
 To use the `PortableText` HTML serializer in rails, you need to add `phlex-rails` to the Gemfile.
@@ -81,6 +86,8 @@ portable_text = PortableText::Serializer.new(content: content, to: :html)
 render portable_text.render
 ```
 
+
+
 ## Configuration
 
 This library is highly  customizable through configuration. This is very straightforward as configuration is just a bunch of hashes that either define classes or key-value pairs.
@@ -91,6 +98,8 @@ So, in order to use a block type or a mark definition, one has to:
 
 - register it in the PortableText configuration, so it can be passed as an object to the serializer
 - create the template in the serializer (see HTML configuration)
+
+
 
 ### Registering block types
 
@@ -135,6 +144,7 @@ end
 PortableText.config.block.types.merge! { my_block: MyBlock }
 ```
 
+
 #### Default block types
 
 It’s probably a good idea to leave the `list` block type untouched. Change at your own risk.
@@ -147,6 +157,7 @@ It’s probably a good idea to leave the `list` block type untouched. Change at 
   span: BlockTypes::Span
 }
 ```
+
 
 ### Registering mark definitions
 
@@ -169,11 +180,14 @@ end
 PortableText.config.block.mark_defs.merge! { new_mark_def: NewMarkDef }
 ```
 
+
+
 ## Html Serializer configuration
 
 After registering your block type or mark definition, you need to create its template.
 
 Each template takes one argument, a block.
+
 
 ### Block Type Template
 
@@ -217,6 +231,7 @@ end
 PortableText::Html.config.block.types.merge! { my_block: Html::MyBlock }
 ```
 
+
 ### Mark Definition template
 
 Each mark definition takes one argument, a mark definition registered in the configuration.
@@ -237,6 +252,7 @@ end
 PortableText::Html.config.block.mark_defs.merge! { new_mark_def: Html::NewMarkDef }
 ```
 
+
 ### Customizing html nodes
 
 Every HTML node is customizable through config and looks this way:
@@ -248,6 +264,7 @@ You can add HTML attributes by appending them. For example:
 ```ruby
 h1: { node: :h1, class: "header" }
 ```
+
 
 ### Configuring marks
 
@@ -262,6 +279,7 @@ PortableText::Html.config.span.marks.merge! { strong: { node: :b,  }}
   em: { node: :em }
 }
 ```
+
 
 ### Configuring styles
 
@@ -283,6 +301,7 @@ PortableText::Html.config.block.styles.merge! { h1: { node: :h3, class: "header"
 }
 ```
 
+
 ### Configuring list_types
 
 ```ruby
@@ -294,6 +313,7 @@ PortableText::Html.config.block.list_types.merge! { bullet: { node: :div }}
   numeric: { node: :ol }
 }
 ```
+
 
 ### Adding a new serializer
 
@@ -323,4 +343,5 @@ serializer = PortableText::Serializer.new(content: content, to: :my_serializer)
 serializer.render(context: "readme")
 # => block - 12345ffxx - readme
 ```
+
 
