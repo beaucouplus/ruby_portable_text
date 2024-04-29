@@ -302,7 +302,7 @@ PortableText::Html.config.block.styles.merge! { h1: { node: :h3, class: "header"
 ```
 
 
-### Configuring list_types
+### Configuring list types
 
 ```ruby
 PortableText::Html.config.block.list_types.merge! { bullet: { node: :div }}
