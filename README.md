@@ -171,13 +171,13 @@ end
 PortableText.config.block.mark_defs.merge! { new_mark_def: NewMarkDef }
 ```
 
-### Html Serializer configuration
+## Html Serializer configuration
 
 After registering your block type or mark definition, you need to create its template.
 
 Each template takes one argument, a block.
 
-#### Block Type Template
+### Block Type Template
 
 ```ruby
 # Let's use the block defined earlier in Registering block types
@@ -219,7 +219,7 @@ end
 PortableText::Html.config.block.types.merge! { my_block: Html::MyBlock }
 ```
 
-#### Mark Definition template
+### Mark Definition template
 
 Each mark definition takes one argument, a mark definition registered in the configuration.
 
@@ -251,7 +251,7 @@ You can add HTML attributes by appending them. For example:
 h1: { node: :h1, class: "header" }
 ```
 
-#### Configuring marks
+### Configuring marks
 
 You can configure marks by updating the marks setting.
 
@@ -265,7 +265,7 @@ PortableText::Html.config.span.marks.merge! { strong: { node: :b,  }}
 }
 ```
 
-#### Configuring styles
+### Configuring styles
 
 ```ruby
 PortableText::Html.config.block.styles.merge! { h1: { node: :h3, class: "header" }}
@@ -285,7 +285,7 @@ PortableText::Html.config.block.styles.merge! { h1: { node: :h3, class: "header"
 }
 ```
 
-#### Configuring list_types
+### Configuring list_types
 
 ```ruby
 PortableText::Html.config.block.list_types.merge! { bullet: { node: :div }}
