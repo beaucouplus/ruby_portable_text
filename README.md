@@ -1,6 +1,6 @@
 # Ruby Portable Text
 
-A ruby library to render Portable text
+A ruby library to render [Portable text](https://www.sanity.io/docs/presenting-block-text)
 
 
 This gem is meant to be easy to use but is also highly configurable and extensible to match many use cases. By default, it can serialize Portable Text to HTML.
