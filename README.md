@@ -21,7 +21,7 @@ gem install portable_text
 
 ## Usage
 
-See [Rails usage](#rails_usage) for usage in rails
+See [Rails usage](#rails-usage) for usage in rails
 
 `PortableText::Serializer` takes 2 parameters:
 
