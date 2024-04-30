@@ -12,7 +12,7 @@ module PortableText
       option :parent, default: proc { nil }
 
       def list? = true
-      def type = :list
+      def type = "list"
 
       # Adds a block to the list.
       # If the block is on same level as the list, it will be added to the list.

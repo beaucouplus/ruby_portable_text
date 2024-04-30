@@ -42,7 +42,7 @@ class PortableText::BlockTypes::ListTest < Minitest::Test
   end
 
   def test_type_is_list
-    assert_equal(:list, @list.type)
+    assert_equal("list", @list.type)
   end
 
   def test_adding_block_with_same_level_adds_to_items
