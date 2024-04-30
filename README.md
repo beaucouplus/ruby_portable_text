@@ -13,6 +13,7 @@ You can:
 - customize each HTML node with custom attributes
 - create a new serializer
 
+This is a very early release so please open issues if something doesn't work as intended.
 
 
 ## Installation
