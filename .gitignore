@@ -6,8 +6,6 @@
 /pkg/
 /spec/reports/
 /tmp/
-/.ipynb_checkpoints/
-# rspec failure tracking
-.rspec_status
 .DS_Store
 .solargraph.yml
+*.gem
