@@ -33,7 +33,16 @@ See [Rails usage](#rails-usage) for usage in rails
 - `content:`  , the portable text Array
 - `to:` , the rendering format. It defaults to: `:html`
 
-### How to render html ?
+You can also use the `:plain` rendering format to show the text without any formatting. The plain serializer is very basic and does not support any configuration, but it can be used as a starting point to create a new serializer.
+```ruby
+PortableText accepts 2 methods, `render` and `convert!`.
+  - `render` renders the content to the specified format defined in the `to` parameter. See [How to render html ?](#how-to-render-html) for more information.
+  - `convert!` converts the content to be used by the library. 
+    - It is useful for debugging purposes.
+    - It transforms the keys to ruby format.
+    - It creates the block types and mark definitions as objects, along with their children and marks, and creates a new data structure for list items.
+
+### How to render html?
 
 Under the hood, the html renderer uses [Phlex](https://www.phlex.fun), a templating language which allows to create html in plain ruby.
 
