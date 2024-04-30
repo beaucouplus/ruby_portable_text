@@ -353,5 +353,7 @@ serializer = PortableText::Serializer.new(content: content, to: :my_serializer)
 serializer.render(context: "readme")
 # => block - 12345ffxx - readme
 ```
+## Acknowledgments
+Thanks to [Joel Drapper](https://github.com/joeldrapper) and [Will Cosgrove](https://github.com/willcosgrove) for their help in building the HTML serializer!
 
 
