@@ -20,7 +20,8 @@ module PortableText
     end
 
     setting :serializers, default: {
-      html: Html::Serializer
+      html: Html::Serializer,
+      plain: Plain::Serializer
     }
   end
 end
