@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    portable_text (0.1.0)
+    portable_text (0.1.1)
       activesupport (~> 7.1)
       dry-configurable (~> 1.0)
       dry-inflector (~> 1.0)
