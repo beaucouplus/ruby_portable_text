@@ -15,7 +15,7 @@ module PortableText
         nodes.map do |block|
           case block.type
           when "block"
-            block.children.map(&:text).join(" ").squeeze.strip
+            block.children.map(&:text).join(" ").squish
           when "list"
             visit(block.items)
           when "image"

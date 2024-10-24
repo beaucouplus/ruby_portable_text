@@ -131,7 +131,7 @@ class SerializerTest < Minitest::Test
     content = render PortableText::Serializer.new(content: body["body"]).render
     assert_equal(
       content,
-      "<h1>Titre h1</h1><h2>Titre h2</h2><h3>Titre h3</h3><h4>Titre h4</h4><blockquote>Citation</blockquote><p>Texte avec le mot <strong>gras</strong> en gras</p><p>Texte avec le mot <em>italique</em> en italique</p><p>Texte avec les mots <strong><em>gras italique</em></strong> en gras et italique</p><ul><li>liste level 1</li><li>liste level 1</li><li>liste level 1</li><ul><li>sous liste level 2</li></ul><ul><li>sous liste <strong>level 2</strong></li><ul><li>sous liste <em>level 3</em></li></ul></ul><ul><li>sous liste level 2</li></ul><li>liste level 1</li><ul><li>sous liste level 2</li><ul><li>sous liste level 3</li></ul></ul><ul><li>sous liste level 2</li></ul></ul><p><a href=\"http://www.sanity.io\">Lien externe</a>  </p>"
+      "<h1>Titre h1</h1><h2>Titre h2</h2><h3>Titre h3</h3><h4>Titre h4</h4><blockquote>Citation</blockquote><p>Texte avec le mot <strong>gras</strong> en gras</p><p>Texte avec le mot <em>italique</em> en italique</p><p>Texte avec les mots comme pomme de terre <strong><em>gras italique</em></strong> en gras et italique</p><ul><li>liste level 1</li><li>liste level 1</li><li>liste level 1</li><ul><li>sous liste level 2</li></ul><ul><li>sous liste <strong>level 2</strong></li><ul><li>sous liste <em>level 3</em></li></ul></ul><ul><li>sous liste level 2</li></ul><li>liste level 1</li><ul><li>sous liste level 2</li><ul><li>sous liste level 3</li></ul></ul><ul><li>sous liste level 2</li></ul></ul><p><a href=\"http://www.sanity.io\">Lien externe</a>  </p>"
     )
   end
   # rubocop:enable Layout/LineLength
