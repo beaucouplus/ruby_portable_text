@@ -16,7 +16,7 @@ class PortableText::Plain::SerializerTest < Minitest::Test
         Citation
         Texte avec le mot gras en gras
         Texte avec le mot italique en italique
-        Texte avec les mots gras italique en gras et italique
+        Texte avec les mots comme pomme de terre gras italique en gras et italique
         liste level 1
         liste level 1
         liste level 1
