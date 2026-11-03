@@ -64,6 +64,9 @@ module PortableText
           block_klass(:list).new(
             items: [block],
             level: block.level,
+            # Carry the item's listItem ("bullet"/"number") onto the list so it
+            # renders <ul> vs <ol>; without this every list defaulted to bullet.
+            list_type: block.list_item,
             parent: nil
           )
         )

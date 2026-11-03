@@ -33,6 +33,10 @@ module PortableText
 
         setting :list_types, default: {
           bullet: { node: :ul },
+          # Sanity/Portable Text emits `listItem: "number"` for ordered lists;
+          # `numeric` is kept for back-compat. Without the `number` key, ordered
+          # lists fall through to the :ul default and render as bullets.
+          number: { node: :ol },
           numeric: { node: :ol }
         }
       end

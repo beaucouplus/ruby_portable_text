@@ -5,7 +5,7 @@ module PortableText
         include Configured
 
         param :block
-        delegate :style, :children, :mark_defs, :list_item, to: :@block
+        delegate :style, :children, :mark_defs, :list_item, :anchor, to: :@block
 
         def view_template
           node_style = node.fetch(:node)
